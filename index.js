@@ -14,9 +14,17 @@ class Counter extends React.Component {
     console.log('click');
   }
 
+decrement(){
+    // todo: this.state.count --;
+    this.setState({
+        count: this.state.count - 1,
+      });
+}
+
+
   render() {
     const h2 = React.createElement('h2', {}, this.state.count);
-    const button = React.createElement(
+    const buttonIncrement = React.createElement(
       'button',
       {
         onClick: () => {
@@ -25,7 +33,16 @@ class Counter extends React.Component {
       },
       '+'
     );
-    return React.createElement(React.Fragment, {}, h2, button);
+    const buttonDecrement = React.createElement(
+        'button',
+        {
+          onClick: () => {
+            this.decrement();
+          },
+        },
+        '-'
+      );
+    return React.createElement(React.Fragment, {}, h2, buttonIncrement, buttonDecrement);
   }
 }
 
@@ -34,6 +51,17 @@ const component = React.createElement(Counter);
 const root = document.querySelector('#root');
 
 ReactDOM.render(component, root);
+
+
+
+/*
+
+1. Зробіть такий же counter, який крім інкременту буде вміти ще й декрементувати лічильник.
+1*. Лічильник не має опускатись нижче нуля.
+
+2. Реалізувати крок лічильника
+
+*/
 
 /*
 1. Реакт - бібліотека для створення користувацьких інтерфейсів
